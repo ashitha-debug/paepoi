@@ -1,0 +1,1356 @@
+s<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paepoi: B2B Content &amp; Social Media Agency</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Inter:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --purple:       #551fbe;
+      --deep-purple:  #43248f;
+      --yellow:       #ffcc00;
+      --green:        #35C18C;
+      --lavender:     #A67CBA;
+      --light-lav:    #E6E6FA;
+      --cream:        #FFF5EE;
+      --off-white:    #EDEAE4;
+      --gray:         #9B9B9B;
+      --black:        #000000;
+      --white:        #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--black);
+      background: var(--white);
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, h5 { font-family: 'Poppins', sans-serif; }
+
+    /* ─── NAV ─────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 60px;
+      background: var(--white);
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+
+    .nav-logo img { height: 70px; display: block; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 0.82rem;
+      text-decoration: none;
+      color: var(--black);
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      position: relative;
+    }
+
+    .nav-links a:not(.nav-cta)::after {
+      content: '';
+      position: absolute;
+      bottom: -3px; left: 0;
+      width: 0; height: 2px;
+      background: var(--yellow);
+      transition: width 0.25s ease;
+    }
+
+    .nav-links a:not(.nav-cta):hover::after { width: 100%; }
+
+    .nav-cta {
+      background: var(--purple) !important;
+      color: var(--white) !important;
+      padding: 10px 22px;
+      border-radius: 6px;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--deep-purple) !important; }
+
+    /* ─── FLOATING SHAPES ─────────────────────────────── */
+    .hero-shapes { position: absolute; inset: 0; overflow: hidden; z-index: 1; pointer-events: none; }
+
+    .elegant-shape {
+      position: absolute;
+      border-radius: 9999px;
+      border: 2px solid rgba(255,255,255,0.12);
+      backdrop-filter: blur(2px);
+      box-shadow: 0 8px 32px rgba(255,255,255,0.08);
+    }
+
+    .elegant-shape::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 9999px;
+      background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.15), transparent 70%);
+    }
+
+    .shape-1 {
+      background: linear-gradient(to right, rgba(85,31,190,0.15), transparent);
+      width: 500px; height: 120px;
+      left: -5%; top: 20%;
+      transform: rotate(12deg);
+      animation: float1 12s ease-in-out infinite, fadeShape 2.4s 0.3s ease both;
+    }
+    .shape-2 {
+      background: linear-gradient(to right, rgba(255,204,0,0.12), transparent);
+      width: 420px; height: 100px;
+      right: 0%; top: 75%;
+      transform: rotate(-15deg);
+      animation: float2 14s ease-in-out infinite, fadeShape 2.4s 0.5s ease both;
+    }
+    .shape-3 {
+      background: linear-gradient(to right, rgba(166,124,186,0.15), transparent);
+      width: 260px; height: 70px;
+      left: 10%; bottom: 10%;
+      transform: rotate(-8deg);
+      animation: float3 10s ease-in-out infinite, fadeShape 2.4s 0.4s ease both;
+    }
+    .shape-4 {
+      background: linear-gradient(to right, rgba(53,193,140,0.12), transparent);
+      width: 180px; height: 50px;
+      right: 20%; top: 12%;
+      transform: rotate(20deg);
+      animation: float4 11s ease-in-out infinite, fadeShape 2.4s 0.6s ease both;
+    }
+    .shape-5 {
+      background: linear-gradient(to right, rgba(255,255,255,0.08), transparent);
+      width: 130px; height: 36px;
+      left: 25%; top: 8%;
+      transform: rotate(-25deg);
+      animation: float5 13s ease-in-out infinite, fadeShape 2.4s 0.7s ease both;
+    }
+
+    @keyframes fadeShape {
+      from { opacity: 0; margin-top: -80px; }
+      to   { opacity: 1; margin-top: 0; }
+    }
+    @keyframes float1 { 0%, 100% { margin-top: 0; } 50% { margin-top: 15px; } }
+    @keyframes float2 { 0%, 100% { margin-top: 0; } 50% { margin-top: -12px; } }
+    @keyframes float3 { 0%, 100% { margin-top: 0; } 50% { margin-top: 18px; } }
+    @keyframes float4 { 0%, 100% { margin-top: 0; } 50% { margin-top: -10px; } }
+    @keyframes float5 { 0%, 100% { margin-top: 0; } 50% { margin-top: 14px; } }
+
+    /* ─── HERO ────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 60px 80px;
+      position: relative;
+      overflow: hidden;
+      background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1600&q=85');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(100deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.6) 60%, rgba(0,0,0,0.2) 100%);
+      z-index: 1;
+    }
+
+    .hero-left {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--yellow);
+      color: var(--black);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 8px 16px 8px 12px;
+      border-radius: 100px;
+      margin-bottom: 32px;
+    }
+
+    h1.hero-title {
+      font-size: clamp(1.8rem, 2.8vw, 2.6rem);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+      color: var(--white);
+    }
+
+    .hero-title .accent {
+      color: var(--yellow);
+      position: relative;
+      display: inline-block;
+    }
+
+    .hero-title .accent::after {
+      display: none;
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.8);
+      max-width: 520px;
+      margin-bottom: 44px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--purple);
+      color: var(--white);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 15px 32px;
+      border-radius: 6px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: 2px solid var(--purple);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(85,31,190,0.3);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 15px 32px;
+      border: 2px solid rgba(255,255,255,0.6);
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+
+    .btn-outline:hover { background: var(--white); color: var(--black); border-color: var(--white); }
+
+    /* Hero right: photo + glyph */
+    .hero-visual {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      height: 520px;
+    }
+
+    .hero-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 20px;
+      display: block;
+      border: 3px solid var(--black);
+    }
+
+    .hero-photo-wrap {
+      position: relative;
+      width: 90%;
+      height: 460px;
+      border-radius: 20px;
+    }
+
+    .hero-photo-wrap::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 20px;
+      background: linear-gradient(135deg, rgba(85,31,190,0.15) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-glyph-overlay {
+      position: absolute;
+      pointer-events: none;
+    }
+
+    /* ─── AI SECTION ──────────────────────────────────── */
+    .ai-section {
+      padding: 120px 60px;
+      background: var(--black);
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ai-section .eyebrow { color: var(--green); }
+    .ai-section .eyebrow::before { background: var(--green); }
+    .ai-section .section-title { color: var(--white); }
+
+    .ai-intro {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: flex-end;
+      margin-bottom: 64px;
+    }
+
+    .ai-intro p {
+      font-size: 1rem;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.6);
+    }
+
+    .ai-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .ai-card {
+      padding: 44px 36px;
+      background: rgba(255,255,255,0.03);
+      position: relative;
+      transition: background 0.25s;
+    }
+
+    .ai-card:hover { background: rgba(255,255,255,0.07); }
+
+    .ai-card-tag {
+      display: inline-block;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 100px;
+      margin-bottom: 24px;
+    }
+
+    .ai-card-tag.tag-yes  { background: rgba(53,193,140,0.15); color: var(--green); }
+    .ai-card-tag.tag-no   { background: rgba(255,204,0,0.12);  color: var(--yellow); }
+    .ai-card-tag.tag-always { background: rgba(85,31,190,0.2); color: #a78bfa; }
+
+    .ai-card h3 {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 14px;
+      line-height: 1.2;
+    }
+
+    .ai-card p {
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.55);
+    }
+
+    .ai-card ul {
+      list-style: none;
+      margin-top: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .ai-card ul li {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.55);
+      padding-left: 16px;
+      position: relative;
+      line-height: 1.5;
+    }
+
+    .ai-card ul li::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 8px;
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.25);
+    }
+
+    .ai-card.tag-yes-card ul li::before { background: var(--green); }
+    .ai-card.tag-no-card ul li::before  { background: var(--yellow); }
+    .ai-card.tag-always-card ul li::before { background: #a78bfa; }
+
+    /* ─── ABOUT ───────────────────────────────────────── */
+    .about {
+      padding: 120px 60px;
+      background: var(--deep-purple);
+      color: var(--white);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .eyebrow {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 22px;
+      height: 2px;
+      background: currentColor;
+      flex-shrink: 0;
+    }
+
+    .about .eyebrow { color: var(--yellow); }
+
+    .about h2 {
+      font-size: clamp(1.9rem, 3vw, 2.8rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 24px;
+    }
+
+    .about p {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 18px;
+    }
+
+    .funnel-list {
+      display: flex;
+      flex-direction: column;
+      border-top: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .funnel-row {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 24px;
+      align-items: center;
+      padding: 28px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+      transition: background 0.2s;
+      position: relative;
+    }
+
+    .funnel-row::before {
+      content: '';
+      position: absolute;
+      left: -60px; top: 0; bottom: 0;
+      width: 3px;
+      background: var(--yellow);
+      transform: scaleY(0);
+      transition: transform 0.25s ease;
+      transform-origin: bottom;
+    }
+
+    .funnel-row:hover::before { transform: scaleY(1); }
+
+    .funnel-label {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 1.15rem;
+      color: var(--yellow);
+      letter-spacing: -0.01em;
+    }
+
+    .funnel-num {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 0.1em;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .funnel-desc {
+      font-size: 0.9rem;
+      line-height: 1.65;
+      color: rgba(255,255,255,0.65);
+    }
+
+    /* ─── SERVICES ────────────────────────────────────── */
+    .services {
+      padding: 120px 60px;
+      background: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .section-header {
+      margin-bottom: 56px;
+    }
+
+    .section-header .eyebrow { color: var(--purple); }
+
+    .section-title {
+      font-size: clamp(1.9rem, 3.2vw, 2.8rem);
+      font-weight: 800;
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+    }
+
+    /* ─── DIAGONAL SPLIT CARDS ────────────────────────── */
+    .split-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .split-card {
+      position: relative;
+      border-radius: 16px;
+      border: 1px solid rgba(0,0,0,0.14);
+      overflow: hidden;
+      height: 340px;
+      cursor: default;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .split-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 48px rgba(0,0,0,0.12);
+    }
+
+    /* Diagonal color fill via pseudo-element */
+    .split-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: white;
+      z-index: 0;
+    }
+
+    .split-card::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      clip-path: polygon(0 0, 62% 0, 0 75%);
+      z-index: 1;
+    }
+
+    .split-card.c1::after { background: var(--yellow); }
+    .split-card.c2::after { background: var(--green); }
+    .split-card.c3::after { background: var(--light-lav); }
+    .split-card.c4::after { background: var(--cream); border: none; }
+    .split-card.c4 { border-color: var(--black); }
+    .split-card.c4::after { background: #ffcc00; opacity: 0.4; }
+
+    .split-card-inner {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      padding: 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: 12px;
+    }
+
+    .split-card-num {
+      position: absolute;
+      top: 36px;
+      left: 36px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 900;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      color: var(--black);
+      opacity: 0.5;
+    }
+
+    .split-card-name {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 900;
+      font-size: clamp(1.8rem, 2.8vw, 2.4rem);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--black);
+    }
+
+    .split-card-line {
+      font-size: 0.88rem;
+      line-height: 1.6;
+      color: #333;
+      max-width: 260px;
+    }
+
+    .split-card-glyph {
+      position: absolute;
+      top: 28px; right: 28px;
+      z-index: 3;
+      opacity: 0.18;
+    }
+
+    /* ─── WHY ─────────────────────────────────────────── */
+    .why {
+      padding: 120px 60px;
+      background: var(--yellow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .why .eyebrow { color: var(--deep-purple); }
+
+    .why-intro {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: flex-end;
+      margin-bottom: 64px;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .why-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 40px 36px;
+      border: 1px solid rgba(0,0,0,0.12);
+      position: relative;
+      transition: transform 0.25s, box-shadow 0.25s;
+      overflow: hidden;
+    }
+
+    .why-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 44px rgba(0,0,0,0.1);
+    }
+
+    .why-card h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .why-card p {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: #444;
+    }
+
+    .why-card-num {
+      position: absolute;
+      top: 14px; right: 20px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 5rem;
+      font-weight: 900;
+      color: rgba(85,31,190,0.06);
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    /* ─── PROCESS ─────────────────────────────────────── */
+    .process {
+      padding: 120px 60px;
+      background: var(--off-white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .process .eyebrow { color: var(--purple); }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      margin-top: 60px;
+      position: relative;
+    }
+
+    .steps::before {
+      content: '';
+      position: absolute;
+      top: 27px; left: 56px; right: 56px;
+      height: 2px;
+      background: var(--purple);
+      z-index: 0;
+    }
+
+    .step {
+      position: relative;
+      z-index: 1;
+    }
+
+    .step-dot {
+      width: 56px;
+      height: 56px;
+      background: var(--purple);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+      margin-bottom: 24px;
+      border: 3px solid var(--off-white);
+    }
+
+    .step h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .step p {
+      font-size: 0.88rem;
+      line-height: 1.65;
+      color: #555;
+    }
+
+    /* ─── CTA ─────────────────────────────────────────── */
+    .cta {
+      padding: 140px 60px;
+      background: var(--black);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-inner { position: relative; z-index: 2; }
+
+    .cta h2 {
+      font-size: clamp(2.4rem, 5vw, 4.2rem);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.08;
+      margin-bottom: 20px;
+      letter-spacing: -0.025em;
+    }
+
+    .cta h2 span { color: var(--yellow); }
+
+    .cta p {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.65);
+      max-width: 440px;
+      margin: 0 auto 44px;
+      line-height: 1.75;
+    }
+
+    .cta .btn-primary {
+      background: var(--yellow);
+      color: var(--black);
+      border-color: var(--yellow);
+      font-size: 1rem;
+    }
+
+    .cta .btn-primary:hover {
+      box-shadow: 0 8px 28px rgba(255,204,0,0.4);
+    }
+
+    .cta-glyph {
+      position: absolute;
+      pointer-events: none;
+      opacity: 0.05;
+    }
+
+    /* ─── FOOTER ──────────────────────────────────────── */
+    footer {
+      background: var(--deep-purple);
+      color: var(--white);
+      padding: 80px 60px 36px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr;
+      gap: 60px;
+      padding-bottom: 56px;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+      margin-bottom: 36px;
+    }
+
+    .footer-brand-logo {
+      display: inline-block;
+      background: white;
+      padding: 8px 14px;
+      border-radius: 6px;
+      margin-bottom: 18px;
+    }
+
+    .footer-brand-logo img { height: 28px; display: block; }
+
+    .footer-about {
+      font-size: 0.9rem;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 16px;
+    }
+
+    .footer-email {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: var(--yellow);
+      text-decoration: none;
+    }
+
+    .footer-email:hover { text-decoration: underline; }
+
+    .footer-col h4 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 18px;
+    }
+
+    .footer-col ul { list-style: none; }
+
+    .footer-col li { margin-bottom: 10px; }
+
+    .footer-col a {
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      font-size: 0.88rem;
+      transition: color 0.2s;
+    }
+
+    .footer-col a:hover { color: var(--white); }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.35);
+    }
+
+    .social-links { display: flex; gap: 10px; }
+
+    .social-links a {
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      font-size: 0.78rem;
+      font-weight: 700;
+      font-family: 'Poppins', sans-serif;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+
+    .social-links a:hover {
+      background: var(--yellow);
+      border-color: var(--yellow);
+      color: var(--black);
+    }
+
+    /* ─── RESPONSIVE ──────────────────────────────────── */
+    @media (max-width: 1080px) {
+      nav { padding: 16px 32px; }
+      .hero { padding: 100px 32px 60px; min-height: 80vh; }
+      .about { grid-template-columns: 1fr; padding: 80px 32px; gap: 48px; }
+      .services { padding: 80px 32px; }
+      .split-card { height: 280px; }
+      .ai-section { padding: 80px 32px; }
+      .ai-intro { grid-template-columns: 1fr; gap: 24px; margin-bottom: 40px; }
+      .ai-grid { grid-template-columns: 1fr; }
+      .why { padding: 80px 32px; }
+      .why-intro { grid-template-columns: 1fr; gap: 24px; margin-bottom: 40px; }
+      .process { padding: 80px 32px; }
+      .steps { grid-template-columns: 1fr 1fr; }
+      .steps::before { display: none; }
+      .cta { padding: 80px 32px; }
+      footer { padding: 60px 32px 32px; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
+    }
+
+    /* ─── ANIMATIONS ─────────────────────────────────── */
+
+    /* Hero entrance */
+    .hero-tag, .hero-title, .hero-sub, .hero-actions {
+      opacity: 0;
+      transform: translateY(24px);
+      animation: heroIn 0.7s ease forwards;
+    }
+    .hero-tag       { animation-delay: 0.1s; }
+    .hero-title     { animation-delay: 0.3s; }
+    .hero-sub       { animation-delay: 0.5s; }
+    .hero-actions   { animation-delay: 0.7s; }
+
+    @keyframes heroIn {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Scroll reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Staggered children */
+    .reveal-stagger > * {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .reveal-stagger.visible > *:nth-child(1) { transition-delay: 0.05s; }
+    .reveal-stagger.visible > *:nth-child(2) { transition-delay: 0.15s; }
+    .reveal-stagger.visible > *:nth-child(3) { transition-delay: 0.25s; }
+    .reveal-stagger.visible > *:nth-child(4) { transition-delay: 0.35s; }
+    .reveal-stagger.visible > * {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Button hover pulse */
+    .btn-primary {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(85, 31, 190, 0.3);
+    }
+
+    @media (max-width: 640px) {
+      nav { padding: 14px 20px; }
+      .nav-links { display: none; }
+      .hero { padding: 85px 20px 56px; }
+      .services { padding: 60px 20px; }
+      .split-grid { grid-template-columns: 1fr; }
+      .split-card { height: 260px; }
+      .ai-section { padding: 60px 20px; }
+      .why { padding: 60px 20px; }
+      .why-grid { grid-template-columns: 1fr; }
+      .process { padding: 60px 20px; }
+      .steps { grid-template-columns: 1fr; }
+      .cta { padding: 60px 20px; }
+      footer { padding: 48px 20px 24px; }
+      .footer-top { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 14px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <img src="Bigger size.png" alt="Paepoi">
+  </div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#contact" class="nav-cta">Let's Talk</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-shapes">
+    <div class="elegant-shape shape-1"></div>
+    <div class="elegant-shape shape-2"></div>
+    <div class="elegant-shape shape-3"></div>
+    <div class="elegant-shape shape-4"></div>
+    <div class="elegant-shape shape-5"></div>
+  </div>
+  <div class="hero-left">
+    <h1 class="hero-title">
+      Content is Everywhere<br><span class="accent">But is Yours Reaching Your Customers?</span>
+    </h1>
+    <p class="hero-sub">
+      We help B2B tech companies build brand, generate pipeline, and close deals faster, with marketing that works across the full buyer journey.
+    </p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">
+        Start a project
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M3 8H13M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <a href="#services" class="btn-outline">See our services</a>
+    </div>
+  </div>
+
+  <!-- Decorative glyph bottom-right -->
+  <svg style="position:absolute; bottom:40px; right:60px; z-index:2; opacity:0.25;" width="130" height="130" viewBox="0 0 100 100" fill="none">
+    <path d="M50 4L96 92H77L50 42L23 92H4Z" fill="#ffcc00"/>
+    <path d="M50 32L68 68H56L50 55L44 68H32Z" fill="white"/>
+  </svg>
+</section>
+
+<!-- ABOUT -->
+<section class="about reveal" id="about">
+  <!-- Background glyph -->
+  <svg style="position:absolute; right:-80px; bottom:-60px; pointer-events:none; opacity:0.06;" width="600" height="600" viewBox="0 0 100 100" fill="none">
+    <path d="M50 4L96 92H77L50 42L23 92H4Z" fill="white"/>
+  </svg>
+  <div>
+    <div class="eyebrow">About Paepoi</div>
+    <h2>Content Mapped to<br>How B2B Buyers Actually Buy</h2>
+    <p>We map content to every stage of your buyer's journey, from the first time someone discovers your product to the moment they sign.</p>
+    <p>Awareness content that pulls the right accounts in. Consideration-stage assets that keep your buying committee engaged when the deal is stalled. Decision-stage content that gives your sales team something worth sending.</p>
+    <a href="#contact" class="btn-primary" style="margin-top: 20px;">
+      Build your content engine
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <path d="M3 8H13M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </div>
+  <div class="funnel-list">
+    <div class="funnel-row">
+      <div>
+        <span class="funnel-num">01</span>
+        <div class="funnel-label">Attract</div>
+      </div>
+      <div class="funnel-desc">SEO and thought leadership that surfaces your brand at the exact moment your buyers are looking.</div>
+    </div>
+    <div class="funnel-row">
+      <div>
+        <span class="funnel-num">02</span>
+        <div class="funnel-label">Engage</div>
+      </div>
+      <div class="funnel-desc">Nurture content that keeps your buying committee warm and your brand credible through a long sales cycle.</div>
+    </div>
+    <div class="funnel-row">
+      <div>
+        <span class="funnel-num">03</span>
+        <div class="funnel-label">Close</div>
+      </div>
+      <div class="funnel-desc">Sales-ready assets: case studies, battlecards, comparison guides. Content that gives your team something worth sending.</div>
+    </div>
+    <div class="funnel-row">
+      <div>
+        <span class="funnel-num">04</span>
+        <div class="funnel-label">Prove</div>
+      </div>
+      <div class="funnel-desc">Regular reporting tied to pipeline metrics, not vanity numbers. You always know what your content is doing.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services reveal" id="services">
+  <div class="section-header">
+    <div class="eyebrow">What we do</div>
+    <h2 class="section-title">Four Ways We Build<br>Your Marketing Engine</h2>
+  </div>
+
+  <div class="split-grid reveal-stagger">
+    <!-- Card 1: Brand Voice -->
+    <div class="split-card c1">
+      <svg class="split-card-glyph" width="120" height="120" viewBox="0 0 100 100" fill="none">
+        <path d="M50 4L96 92H77L50 42L23 92H4Z" fill="#000"/>
+      </svg>
+      <div class="split-card-inner">
+        <div class="split-card-num">01</div>
+        <div>
+          <div class="split-card-name">Brand<br>Voice</div>
+          <div class="split-card-line" style="margin-top:12px;">A sharp point of view in a crowded B2B tech market. We define your messaging hierarchy so every touchpoint, from a LinkedIn post to a sales deck, says the same thing, consistently.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2: Social Media -->
+    <div class="split-card c2">
+      <svg class="split-card-glyph" width="120" height="120" viewBox="0 0 100 100" fill="none">
+        <path d="M50 4L96 92H77L50 42L23 92H4Z" fill="#000"/>
+      </svg>
+      <div class="split-card-inner">
+        <div class="split-card-num">02</div>
+        <div>
+          <div class="split-card-name">Social<br>Media</div>
+          <div class="split-card-line" style="margin-top:12px;">LinkedIn strategy that gets your brand in front of the buying committee, not just their feeds. We build presence with the decision-makers who matter to your pipeline.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 3: Content Marketing & SEO -->
+    <div class="split-card c3">
+      <svg class="split-card-glyph" width="120" height="120" viewBox="0 0 100 100" fill="none">
+        <path d="M50 4L96 92H77L50 42L23 92H4Z" fill="#000"/>
+      </svg>
+      <div class="split-card-inner">
+        <div class="split-card-num">03</div>
+        <div>
+          <div class="split-card-name">Content<br>Marketing</div>
+          <div class="split-card-line" style="margin-top:12px;">Thought leadership that builds category authority. Nurture assets that keep deals moving. Every piece tied to a stage in your buyer's journey, not just a publishing calendar.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 4: Sales Enablement -->
+    <div class="split-card c4">
+      <svg class="split-card-glyph" width="120" height="120" viewBox="0 0 100 100" fill="none">
+        <path d="M50 4L96 92H77L50 42L23 92H4Z" fill="#000"/>
+      </svg>
+      <div class="split-card-inner">
+        <div class="split-card-num">04</div>
+        <div>
+          <div class="split-card-name">Sales<br>Enablement</div>
+          <div class="split-card-line" style="margin-top:12px;">Case studies, battlecards, one-pagers, and comparison guides that arm your sales team with the right content for every conversation in the pipeline.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI SECTION -->
+<section class="ai-section reveal">
+  <svg style="position:absolute;top:20px;left:20px;pointer-events:none;opacity:0.06;" width="340" height="340" viewBox="0 0 100 100" fill="none">
+    <path d="M50 4L96 92H77L50 42L23 92H4Z" fill="white"/>
+  </svg>
+  <svg style="position:absolute;bottom:20px;right:20px;pointer-events:none;opacity:0.05;" width="280" height="280" viewBox="0 0 100 100" fill="none">
+    <path d="M50 4L96 92H77L50 42L23 92H4Z" fill="white"/>
+  </svg>
+  <div class="ai-intro">
+    <div>
+      <div class="eyebrow">AI-Powered Marketing</div>
+      <h2 class="section-title" style="color:white;">Workflows Built Around<br>Your Sales Funnel</h2>
+    </div>
+    <p>We use AI to build systematic marketing workflows that map to every stage of your buyer's journey, so your marketing machine runs consistently, produces faster, and feeds your pipeline without burning your team out.</p>
+  </div>
+
+  <div class="ai-grid">
+    <div class="ai-card tag-yes-card">
+      <span class="ai-card-tag tag-yes">Attract</span>
+      <h3>Top-of-Funnel Workflows</h3>
+      <p>AI analyses thousands of search queries to identify exactly what your buyers are researching at the awareness stage. Then we build a content plan around it.</p>
+      <ul>
+        <li>AI clusters keywords by intent to map content gaps your competitors haven't filled</li>
+        <li>Automated brief generation cuts research time so writers focus on insight, not groundwork</li>
+        <li>AI-assisted social scheduling keeps LinkedIn presence consistent without manual effort</li>
+      </ul>
+    </div>
+
+    <div class="ai-card tag-no-card">
+      <span class="ai-card-tag tag-no">Engage</span>
+      <h3>Mid-Funnel Nurture Workflows</h3>
+      <p>AI maps your buyer personas to content formats and topics that move them from aware to actively evaluating, then automates the delivery cadence.</p>
+      <ul>
+        <li>AI scores and segments leads to personalise nurture content by role and deal stage</li>
+        <li>Automated sequence workflows trigger the right asset at the right point in the cycle</li>
+        <li>AI monitors engagement signals to flag accounts that are heating up for your sales team</li>
+      </ul>
+    </div>
+
+    <div class="ai-card tag-always-card">
+      <span class="ai-card-tag tag-always">Close</span>
+      <h3>Bottom-of-Funnel Sales Workflows</h3>
+      <p>AI pulls together competitive intelligence and deal-specific context so your sales team walks into every conversation with the right content ready.</p>
+      <ul>
+        <li>AI-generated competitive analysis feeds battlecards that are always current</li>
+        <li>Automated case study frameworks cut production time from weeks to days</li>
+        <li>AI drafts ROI models and business case templates personalised to the prospect's industry</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- WHY PAEPOI -->
+<section class="why reveal" id="why">
+  <svg style="position:absolute;bottom:-60px;left:-80px;pointer-events:none;opacity:0.07;" width="480" height="480" viewBox="0 0 100 100" fill="none">
+    <path d="M50 4L96 92H77L50 42L23 92H4Z" fill="#000"/>
+  </svg>
+  <div class="why-intro">
+    <div>
+      <div class="eyebrow">Why Paepoi</div>
+      <h2 class="section-title">Four Reasons B2B Tech<br>Companies Choose Us</h2>
+    </div>
+    <p style="font-size: 1rem; line-height: 1.75; color: #333; max-width: 380px;">
+      B2B decisions aren't linear. Multiple decision-makers, long evaluation cycles, and shifting priorities mean your content needs to stay relevant across every touchpoint.
+    </p>
+  </div>
+
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-card-num">01</div>
+      <h3>We Speak B2B Tech Fluently</h3>
+      <p>We know the buyers, the sales cycles, and the language that actually lands with technical decision-makers. No hand-holding required on the domain front.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-card-num">02</div>
+      <h3>Strategy First, Always</h3>
+      <p>Every engagement starts with your goals, your audience, and your competition. Content without strategy is just noise. We don't produce noise.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-card-num">03</div>
+      <h3>Results You Can Actually See</h3>
+      <p>Regular reporting, clear metrics, no vanity numbers. We track what matters to your business and adjust when needed. You always know what your content is doing.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-card-num">04</div>
+      <h3>A Real Team, Not a Content Farm</h3>
+      <p>Experienced marketers and writers who care about quality. Not outsourced, not templated. Real thinking, real writing, real results.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process reveal" id="process">
+  <svg style="position:absolute;top:50%;right:-100px;transform:translateY(-50%);pointer-events:none;opacity:0.07;" width="420" height="420" viewBox="0 0 100 100" fill="none">
+    <path d="M50 4L96 92H77L50 42L23 92H4Z" fill="#551fbe"/>
+  </svg>
+  <div class="section-header">
+    <div class="eyebrow">How we work</div>
+    <h2 class="section-title">From Brief to Results<br>In Four Steps</h2>
+  </div>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-dot">1</div>
+      <h3>Discover</h3>
+      <p>We dig into your business goals, target audience, competitive landscape, and existing content before we write a single word.</p>
+    </div>
+    <div class="step">
+      <div class="step-dot">2</div>
+      <h3>Strategize</h3>
+      <p>We build a content plan tailored to your goals. Topics, formats, channels, keywords, all mapped before production begins.</p>
+    </div>
+    <div class="step">
+      <div class="step-dot">3</div>
+      <h3>Create</h3>
+      <p>Our writers get to work. You review, we refine. The output is content you're proud to put your name on.</p>
+    </div>
+    <div class="step">
+      <div class="step-dot">4</div>
+      <h3>Measure</h3>
+      <p>We track performance, report regularly, and iterate. Good content gets better over time when someone's paying attention.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="contact">
+  <!-- Decorative glyphs -->
+  <svg class="cta-glyph" style="left:-60px; top:50%; transform:translateY(-50%);" width="320" height="320" viewBox="0 0 100 100" fill="none">
+    <path d="M50 4L96 92H77L50 42L23 92H4Z" fill="white"/>
+    <path d="M50 32L68 68H56L50 55L44 68H32Z" fill="black"/>
+  </svg>
+  <svg class="cta-glyph" style="right:-40px; bottom:20px;" width="220" height="220" viewBox="0 0 100 100" fill="none">
+    <path d="M50 4L96 92H77L50 42L23 92H4Z" fill="white"/>
+    <path d="M50 32L68 68H56L50 55L44 68H32Z" fill="black"/>
+  </svg>
+
+  <div class="cta-inner">
+    <h2>Ready to Make Your<br>Content <span>Work?</span></h2>
+    <p>Let's figure out what your content is missing and build a plan to fix it. No pitch deck, no hard sell.</p>
+    <a href="mailto:swetha@paepoi.com" class="btn-primary">
+      Get in touch
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+        <path d="M3 9H15M11 5l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <svg style="position:absolute;top:-40px;right:-60px;pointer-events:none;opacity:0.06;" width="380" height="380" viewBox="0 0 100 100" fill="none">
+    <path d="M50 4L96 92H77L50 42L23 92H4Z" fill="white"/>
+  </svg>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand-logo">
+        <img src="Bigger size.png" alt="Paepoi">
+      </div>
+      <p class="footer-about">SEO content and social media for B2B tech companies. Based in Thiruvanmiyur, Chennai. Working with clients everywhere.</p>
+      <a href="mailto:swetha@paepoi.com" class="footer-email">swetha@paepoi.com</a>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Content Marketing</a></li>
+        <li><a href="#services">Social Media</a></li>
+        <li><a href="#services">Branding</a></li>
+        <li><a href="#services">Content Writing</a></li>
+        <li><a href="#services">SEO</a></li>
+        <li><a href="#services">Blogger Outreach</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#why">Why Paepoi</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="mailto:swetha@paepoi.com">Contact</a></li>
+        <li><a href="https://www.linkedin.com/company/paepoi/" target="_blank" rel="noopener">LinkedIn</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2025 Paepoi. All rights reserved.</span>
+    <div class="social-links">
+      <a href="https://www.linkedin.com/company/paepoi/" target="_blank" rel="noopener" title="LinkedIn">in</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
