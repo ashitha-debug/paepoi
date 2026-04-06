@@ -86,71 +86,6 @@ s<!DOCTYPE html>
     }
     .nav-cta:hover { background: var(--deep-purple) !important; }
 
-    /* ─── FLOATING SHAPES ─────────────────────────────── */
-    .hero-shapes { position: absolute; inset: 0; overflow: hidden; z-index: 1; pointer-events: none; }
-
-    .elegant-shape {
-      position: absolute;
-      border-radius: 9999px;
-      border: 2px solid rgba(255,255,255,0.12);
-      backdrop-filter: blur(2px);
-      box-shadow: 0 8px 32px rgba(255,255,255,0.08);
-    }
-
-    .elegant-shape::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: 9999px;
-      background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.15), transparent 70%);
-    }
-
-    .shape-1 {
-      background: linear-gradient(to right, rgba(85,31,190,0.15), transparent);
-      width: 500px; height: 120px;
-      left: -5%; top: 20%;
-      transform: rotate(12deg);
-      animation: float1 12s ease-in-out infinite, fadeShape 2.4s 0.3s ease both;
-    }
-    .shape-2 {
-      background: linear-gradient(to right, rgba(255,204,0,0.12), transparent);
-      width: 420px; height: 100px;
-      right: 0%; top: 75%;
-      transform: rotate(-15deg);
-      animation: float2 14s ease-in-out infinite, fadeShape 2.4s 0.5s ease both;
-    }
-    .shape-3 {
-      background: linear-gradient(to right, rgba(166,124,186,0.15), transparent);
-      width: 260px; height: 70px;
-      left: 10%; bottom: 10%;
-      transform: rotate(-8deg);
-      animation: float3 10s ease-in-out infinite, fadeShape 2.4s 0.4s ease both;
-    }
-    .shape-4 {
-      background: linear-gradient(to right, rgba(53,193,140,0.12), transparent);
-      width: 180px; height: 50px;
-      right: 20%; top: 12%;
-      transform: rotate(20deg);
-      animation: float4 11s ease-in-out infinite, fadeShape 2.4s 0.6s ease both;
-    }
-    .shape-5 {
-      background: linear-gradient(to right, rgba(255,255,255,0.08), transparent);
-      width: 130px; height: 36px;
-      left: 25%; top: 8%;
-      transform: rotate(-25deg);
-      animation: float5 13s ease-in-out infinite, fadeShape 2.4s 0.7s ease both;
-    }
-
-    @keyframes fadeShape {
-      from { opacity: 0; margin-top: -80px; }
-      to   { opacity: 1; margin-top: 0; }
-    }
-    @keyframes float1 { 0%, 100% { margin-top: 0; } 50% { margin-top: 15px; } }
-    @keyframes float2 { 0%, 100% { margin-top: 0; } 50% { margin-top: -12px; } }
-    @keyframes float3 { 0%, 100% { margin-top: 0; } 50% { margin-top: 18px; } }
-    @keyframes float4 { 0%, 100% { margin-top: 0; } 50% { margin-top: -10px; } }
-    @keyframes float5 { 0%, 100% { margin-top: 0; } 50% { margin-top: 14px; } }
-
     /* ─── HERO ────────────────────────────────────────── */
     .hero {
       min-height: 100vh;
@@ -1000,13 +935,6 @@ s<!DOCTYPE html>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-shapes">
-    <div class="elegant-shape shape-1"></div>
-    <div class="elegant-shape shape-2"></div>
-    <div class="elegant-shape shape-3"></div>
-    <div class="elegant-shape shape-4"></div>
-    <div class="elegant-shape shape-5"></div>
-  </div>
   <div class="hero-left">
     <h1 class="hero-title">
       Content is Everywhere<br><span class="accent">But is Yours Reaching Your Customers?</span>
