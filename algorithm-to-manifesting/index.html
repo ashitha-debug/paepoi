@@ -33,5 +33,28 @@
     <section class="closing"><span class="eyebrow">Ready when you are</span><h2 class="section-title">Begin your 21 days.</h2><p class="muted">A practical daily space to listen, pause and reflect.</p><a class="button" href="https://rzp.io/rzp/maya-21-days" target="_blank" rel="noopener noreferrer">Buy for ₹2,000 INR (approx. US$21) →</a></section>
   </main>
   <footer><div class="wrap"><span>© Paepoi · Digital product by Paepoi</span><nav aria-label="Policies"><a href="terms.html">Terms & Conditions</a><a href="privacy.html">Privacy Policy</a><a href="refunds.html">Refund & Cancellation</a><a href="delivery.html">Digital Delivery</a><a href="mailto:swetha@paepoi.com">Contact</a></nav></div></footer>
+  
+<script>
+  // Replace this with your new $50 Razorpay Payment Page URL
+  const CHECKOUT_URL = "PASTE_YOUR_NEW_RAZORPAY_LINK_HERE";
+
+  // Update the displayed product price
+  document.querySelector(".price").innerHTML =
+    '$50 <span style="font-family:DM Sans,Arial,sans-serif;font-size:17px;font-weight:700;vertical-align:middle">USD</span>';
+
+  // Update price information
+  document.querySelector(".price-note").textContent =
+    "One-time payment · Digital delivery by email";
+
+  // Update the payment description
+  document.querySelector(".after").textContent =
+    "Secure checkout via Razorpay. Access instructions are emailed after successful payment.";
+
+  // Update both purchase buttons
+  document.querySelectorAll('a.button[href*="rzp.io"]').forEach(button => {
+    button.href = CHECKOUT_URL;
+    button.textContent = "Buy Now — $50 USD →";
+  });
+</script>
 </body>
 </html>
